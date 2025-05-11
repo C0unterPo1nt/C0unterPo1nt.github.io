@@ -27,7 +27,7 @@ github_username:  C0unterPo1nt
 
 # Build settings
 #theme: no-style-please
-theme: minima
+theme: jekyll-theme-moonwalk
 plugins:
   - jekyll-feed
 
