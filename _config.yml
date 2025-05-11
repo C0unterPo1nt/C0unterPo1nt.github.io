@@ -26,7 +26,7 @@ url: "https://C0unterPo1nt.github.io" # the base hostname & protocol for your si
 github_username:  C0unterPo1nt
 
 # Build settings
-theme: minima
+#theme: minima
 plugins:
   - jekyll-feed
 
