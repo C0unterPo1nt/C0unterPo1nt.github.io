@@ -10,5 +10,5 @@ This is my personal website, I'm mostly here to blab about whatever whim sweeps 
 
 More soon!! <3
 
-*Welcome to the Fiction*
+*Welcome to the Fiction* <br>
 Object of Affection, Jamie Paige
