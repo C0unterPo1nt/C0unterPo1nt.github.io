@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "Init"
+date:   2025-05-11 00:06:00 -0700
+tags: life projects web
+---
+So here we are.
+
+The year is 2025, the fascists are in power, I've moved into an apartment full of bugs,
+
+and I've decided to start blogging.
+
+This website started as a dream kicked down the road for years. Just a little thing for me to tinker with and use as a creative outlet. A few years ago I cut out all of my social media in an attempt to feel more connected with fewer people and to wrestle back control of my dopamine regulation. Since then, starting a website became something I started tentatively planning for. Thinking about how I'd host it, what I'd use it for and what it'd look like. As a serial ruminator, this meant that this website wouldn't come to fruition for ages. It had to be *perfect*. 
+
+I became serious about it about a month ago when my partner, star, offered to set up the basic infrastructure for me real quick. They had been pushing me to act on this desire for months, mostly due to their own enthusiasm for the hobby. What was promised to be a 5 minute endeavor quickly escalated into 45 minutes of getting ruby to play nice with the tangle of wires and dust that I call my desktop environment, the result of many years of poor OS hygiene. After a while of switching between idly flipping anki cards and coaching star through my labrinthian filesystem, a stupid little white void emblazened with "Lucy's awesome site!!!1!", full of default tutorial content slipped out of my monitor and onto my desk, wet with the promise of untapped potential. Star had the widest grin on their face. The pioneers of web one would be so proud.
+
+On this sunny sunday afternoon, almost a month later, I was in need of a distraction from all of the stress of weatherproofing windows and unpacking boxes. So I sat down and deconstructed the mysterious black box that my partner had unceremoniously dumped onto my github. The site is built in ruby with a framework called jekyll and deployed using github pages. That last bit will be obvious for a little while, until I actually get around to updating my dns.
+
+I wasted a long time on trying to find and implement an out of the box theme for the website so I wouldn't waste a bunch of time fine tuning the look of this place. However, computers is a bitch so I threw gem in the trash and manually imported the default layout into my repository for me to thessiate into something I like. So far, the changes I've implemented consist of filling in basic site details like the title, description and author, as well as changing the colors that I know will appear on the site as I have it currently set up to match my proclivities (if you use light mode this website isn't for you.)
+
+I figured that all of that work would be somewhat moot if I didn't have a post that I could use to deliver my beautiful styles to your computer for viewing pleasure. 
+
+My hopes for the future of this blog are numerous. I can see myself tinkering a lot with the styles, and might use it as a playground to practice react. I also kind of want to use it as a social media alternative, and may post about travel, life updates, and photos in a dedicated page. As for the blog, I plan to write mostly about various projects, reviews of media I like or have thoughts about, and might post updates on my study of japanese.
+
+Here's to many more~
+
+Happy Mother's day
