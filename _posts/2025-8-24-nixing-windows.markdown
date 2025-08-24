@@ -35,7 +35,7 @@ Personally, switching to Linux is probably the best decision I've made this year
 
 If you're frustrated with the windows ecosystem, you should seriously think about Linux. Assuming you're one of my non-techie friends (the majority of the people that actually read this blog,) don't be intimidated by this post. I intentionally picked hard mode, an unsurprising decision if you are familiar with my proclivities. If you're willing to make do every now and again, Linux is a very powerful os that gives you endless control over it. I believe firmly that Linux is suitable to the average consumer and a wonderland to the technically inclined.
 
-I'll leave you with a quick shot of my desktop, featuring the illustrious Miku Hatsune, and a blurry png of my final fantasy character. I promise to include more pictures next time to break up the monotony of my long-windedness. 
+I'll leave you with a quick shot of my desktop, featuring the illustrious Miku Hatsune, and a blurry png of my final fantasy character, and a link to my [nix configuration](https://github.com/C0unterPo1nt/nixconfig), if you're interested. I promise to include more pictures next time to break up the monotony of my long-windedness. 
 
 またね
 
