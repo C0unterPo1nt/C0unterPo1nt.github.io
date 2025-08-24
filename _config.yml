@@ -21,7 +21,7 @@
 title: Phoenix Falling
 author: Lucy Farrell
 description: >- # this means to ignore newlines until "baseurl:"
-  Let me tell you a story
+  This space intentionally left blank
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://C0unterPo1nt.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:categories/:title:output_ext

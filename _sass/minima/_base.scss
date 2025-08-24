@@ -55,8 +55,14 @@ main {
  * Images
  */
 img {
+  display: block;
   max-width: 100%;
-  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img + em {
+  font-size: $small-font-size;
 }
 
 
