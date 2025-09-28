@@ -1,0 +1,88 @@
+---
+layout: post
+title: "Hyprland"
+date: 2025-09-27
+categories: blog projects
+---
+I initially wrote up a long intro about how I got here, but decided it was boring. Let's talk about Hyprland.
+
+## What?
+Most of the people that read this are my non technical friends so allow me to info dump for a few minutes. Once a computer is ready to pass control to a user after startup, it will generally show you a "desktop manager". This appears from the outside as just a login screen but it also handles starting the desktop session under the hood. It does this by running either a compositor or a window manager, depending on what windowing system you are using. These concepts are different but because they serve the same purpose to a desktop I will be using the terms interchangeably for brevity. Generally compositors come bundled with all of the configuration and utilities that a user might need out of the box. These are usually called "desktop environments" or just "desktops". This is the part of the computer that your average computer user means when they talk about the operating system. Your walpaper, the taskbar, application launcher, file explorer, windows, hotkeys, calculator, notifications, etc. Like a lot of programs, you can also get a compositor without all of the ui and preinstalled programs. Hyprland is one such compositor.
+
+## Ok,,,Why?
+The majority of minimalist linux users do it for the speed or the productivity boost of having nothing but exactly what you need. As for me, I am concerned with aesthetics. If you are not familiar with how stylized you can make a linux system, take a peek at [r/unixporn](https://www.reddit.com/r/unixporn/) (I promise there is nothing nsfw on the other side of this link). This customizeation is often called "ricing", a term borrowed from the car scene. While this is the most popular word for the craft, it has some racial connotations and so I will use the less popular alternative "theming".
+Theming is a hobby I caught wind of a while ago and toyed with the idea of getting into. I got serious about the idea after the clunky taskbar customization interface in kde plasma started pissing me off, and I eventually decided to make the leap after watching this [video](https://youtu.be/jFz5gLqv-FM?si=saTTmjNjr9yBC3GX).
+
+## Some prep work
+Because I use NixOS, I walked into this endeavor very concerned with the reproducability of all this work. If my harddrive decided to brick one day, how was I going to reduce the friction of getting set up again? Fortunately there is a very popular system for this called [Home Manager](https://github.com/nix-community/home-manager). Home Manager allows me to set up my user profile, home directory and all of my software configurations from a nix configuration file. That last one is the one we are concerned about because using hyprland requires a lot of manual software installation and setup. Home Manager requires a flake installation, so I had to set those up before I could use it. I won't get into how those work but you can read about them [here](https://nixos.wiki/wiki/flakes). 
+
+## Dipping my toes in
+Before I decided to totally commit myself to living on a minimalist desktop, I decided to try my hand at configuring an application launcher while I was still on kde plasma to see if I could handle the granularity required of it. The video I linked above recommended [Wofi](https://github.com/SimplyCEO/wofi) so I got to work.
+
+![Wofi](/assets/hyprland/wofi.gif)
+*KDE Plasma: Its better than windows*
+
+I spent most of the time here on getting the script to run properly. Plasma gave me some issues with their hotkey system and the script that I was using needed a lot of tweaking as I tried implementing it in different places. I really wanted to try to emulate the spotlight search bar from MacOS, so I used that as the general design goal. It ended up looking like shit, but it got me used to the way that configuring ui elements would work, and it gave me some confidence to take the next step. 
+
+## Hyprland
+Finally, we've arrived at the meat and potatoes. You might be wondering, "what the heck does this thing even look like?" Well, it looks like this:
+
+![Default Hyprland](/assets/hyprland/hyprland.gif)
+*Yes, the anime girl is a default wallpaper*
+
+When configuring hyprland for the first time, I only included monitor configuration and a setting to open my terminal with a specific keypress, which is what you see here. This was the only thing my implementation was capable at the time, this is an uncropped video of everything I was able to do via runtime hyprland. Resizing windows, rendering a task bar, and locking the screen were not possible. I even had to close windows by killing the process via command line.
+
+My next step was to write a more thorough configuration. I started by binding Wofi to a hotkey so I could run applications without needing a terminal. Then I implemented some window controls, picked out some colors, and started exploring other pieces of software that would suppliment where hyprland is lacking. I started with hyprpaper, a program who's only job is to seamlessly integrate with hyprland to add wallpapers to your desktop, and moved on from there. 
+
+From this point on in the post I'll be changing the format from chronological to systematic, as we'll break down each piece of software that I find noteworthy rather than follow the creative process. The timeline just gets too messy and technical for me to bother writing it all out, and I think It'll be more interesting this way. I'll go ahead and talk a little on the more interesting parts of my hyprland config before moving onto the other pieces.
+
+Hyprland is a tiling window manager, which means that windows automatically grow to fill as much space as possible on the screen without overlapping eachother. It looks something like this.
+
+![Tiling](/assets/hyprland/tiles.gif)
+*These animations would look so nice if I knew how to use ffmpeg trust*
+
+This is extremely convenient if you like having multiple windows onscreen but creates issues with things like popup windows. I had to configure each case that I found troublesome. For example, trying to open a file in another program pops up a file manager to allow you to make a selection. Without configuration that window will tile and look weird. If you configure it to float and throw in some animations it looks like this.
+
+![Popup Windows](/assets/hyprland/popup_window.gif)
+*Whoa! This blog post!*
+
+Another quirk of Hyprland is that there is no native capacity to minimize windows. Instead it heavily relies on workspaces to organize your windows. There are certainly ways to extend it to have this capacity but I was already redefining my relationship with my desktop so I decided to lean in. Instead of minimizing windows I have 3 workspaces on my second monitor that I use to cycle through groups of windows that I'm using.
+
+![Workspaces](/assets/hyprland/workspaces.gif)
+*These are just the windows I had open when writing this LOL*
+
+## Waybar
+This was the first major addition that I made to hyprland. Waybar is a program that renders bars on wayland based desktops with all sorts of configurable modules. You can read about it [here](https://github.com/Alexays/Waybar).
+
+I use a two monitor setup and I wanted each bar to be distinct and uniquely useful from the other.
+The first one is on my primary monitor, so I wanted to keep it simple and streamlined. Only information on the focused window and the date and time are on this bar.<br/>
+
+![Waybar 1](/assets/hyprland/waybar1.png)
+<br/>
+
+The second one, my off monitor, has a higher density of information since it's ok if I'm a little distracted while looking at it. It has my current active workspace, window info, an audio visualizer, and hardware monitors.<br/>
+
+![Waybar 2](/assets/hyprland/waybar2.png)
+<br/>
+
+## Fuzzel
+While wofi was a nice first step and did its job. It was really lacking in a lot of departments. The search algorithm was not very robust, there was no mouse support, no icons, configuration options were limited and not well documented, and probably most infuriating, it was <em>really slow</em>.
+
+Enter fuzzel. While browsing other peoples configs, I found that the setups with the nicest app launchers were almost exclusively using fuzzel so I decided to plug it in and dress it up a bit.
+
+![Fuzzel](/assets/hyprland/app_launcher.gif)
+
+## Dunst
+Dunst is a notification daemon, which is a subprocess that accepts calls to the notification interface on the os and handles them. Most importantly, it actually displays the notifications on-screen. 
+
+![Notifications](/assets/hyprland/notifications.gif)
+*I'm so subtle with music plugs*
+
+This module was the most annoying to configure because you can't hot reload the program. It requires a home manager rebuild each time, or a manual restart of the daemon (which I never bothered to learned how to do). Because of how annoying it is, I haven't configured this one as much as I'd like to. It currently cant redirect your focus if you click a notification, and I'd like for it to support menu options also.
+
+## Hyprlock
+
+## Stylix
+
+## Terminal
+
