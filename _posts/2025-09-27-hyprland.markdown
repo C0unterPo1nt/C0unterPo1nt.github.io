@@ -51,6 +51,19 @@ Another quirk of Hyprland is that there is no native capacity to minimize window
 ![Workspaces](/assets/hyprland/workspaces.gif)
 *These are just the windows I had open when writing this LOL*
 
+## Stylix
+This section could easily turn into it's own blog post. One I do not feel like writing, so I'll keep this as brief as I can. One of the largest challenges of custom linux theming is handling GTK. The Gnome Theme Kit, or GTK, is an api protocol that unifies the theming standards of the programs that implement it. It allows you to set one GTK theme for your system and any program that conforms to GTK will follow that theme. It's very popular as its an extension of the theming system for the Gnome desktop, which I believe to be the most popular linux desktop. 
+
+I'm glad that something like this exists, but it creates problems for trying to do things from scratch because you have to implement some system for keeping coherence between your GTK theme and the themes of your non GTK apps. GTK will not manage non GTK apps, obviously. Which means that you have to determine your theming scheme outside of GTK and tell GTK to conform to that theme. Unfortunately, GTK themes are about 4 orders of magnitude worth of css. This is such a gargantuan task that it dwarfs the effort of every other task of this project combined. This leaves you with two options, find a GTK theme you like and manually set your other colors to match, or find some programatic solution to write you a GTK theme.
+
+Enter [Stylix](https://github.com/nix-community/stylix)
+
+Stylix sits just above GTK and numerous other popular apps, distributing a color scheme into their configurations. Stylix is a bit of a necessary evil to me. I would rather use some kind of scss scheme to manage my colors, but that would require me to wrestle with GTK. I could in theory turn off Stylix's management of other apps but I think it would keep the whole project cleaner if I centralized my color controls in one place.
+
+I don't think I'll be making substantial changes to this part of my system anytime soon. I lost the majority of a week brainstorming, researching and solving this problem, and Stylix is a solution that seems stable.
+
+Moving on.
+
 ## Waybar
 This was the first major addition that I made to hyprland. Waybar is a program that renders bars on wayland based desktops with all sorts of configurable modules. You can read about it [here](https://github.com/Alexays/Waybar).
 
@@ -68,9 +81,10 @@ The second one, my off monitor, has a higher density of information since it's o
 ## Fuzzel
 While wofi was a nice first step and did its job. It was really lacking in a lot of departments. The search algorithm was not very robust, there was no mouse support, no icons, configuration options were limited and not well documented, and probably most infuriating, it was <em>really slow</em>.
 
-Enter fuzzel. While browsing other peoples configs, I found that the setups with the nicest app launchers were almost exclusively using fuzzel so I decided to plug it in and dress it up a bit.
+Enter fuzzel. While browsing other peoples configs, I found that the setups with the nicest app launchers were almost exclusively using fuzzel so I decided to plug it in and dress it up a bit. This is the best looking piece of the ui in my opinion.
 
 ![Fuzzel](/assets/hyprland/app_launcher.gif)
+*I wish I could figure out why the icons are so inconsistent*
 
 ## Dunst
 Dunst is a notification daemon, which is a subprocess that accepts calls to the notification interface on the os and handles them. Most importantly, it actually displays the notifications on-screen. 
@@ -81,8 +95,10 @@ Dunst is a notification daemon, which is a subprocess that accepts calls to the 
 This module was the most annoying to configure because you can't hot reload the program. It requires a home manager rebuild each time, or a manual restart of the daemon (which I never bothered to learned how to do). Because of how annoying it is, I haven't configured this one as much as I'd like to. It currently cant redirect your focus if you click a notification, and I'd like for it to support menu options also.
 
 ## Hyprlock
+Another hyprland ecosystem util. This is a simple gpu-accelerated screen lock. I intentionally kept the config for this one pretty barebones. Though I'm considering adding music controls to the screen. Pretty much everything in the configuration is for show.
 
-## Stylix
+![Lockscreen](/assets/hyprland/lock.gif)
+*Simplicity is bliss*
 
 ## Terminal
 
